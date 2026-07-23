@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #faf7f0; }
+  a { color: #556042; text-decoration: none; transition: opacity .2s; }
+  a:hover { opacity: .6; }
+
+  /* sal-responsive */
+  @media (max-width: 900px) {
+    header > div:first-child { flex-wrap: wrap !important; justify-content: center !important; gap: 10px 22px !important; padding: 14px 20px 10px !important; }
+    header nav { flex: 0 0 auto !important; justify-content: center !important; gap: 20px !important; font-size: 12px !important; }
+    section, footer { padding-left: 24px !important; padding-right: 24px !important; }
+    [style*="padding: 0 56px"] { padding-left: 24px !important; padding-right: 24px !important; }
+    [style*="repeat(4"] { grid-template-columns: repeat(2, 1fr) !important; }
+    [style*="grid-template-columns: 1fr auto 1fr"] { grid-template-columns: 1fr !important; row-gap: 48px !important; }
+    [style*="justify-self: end"], [style*="justify-self: start"] { justify-self: center !important; }
+    [style*="grid-template-columns: 1.3fr"] { grid-template-columns: 1fr 1fr !important; }
+    [style*="grid-template-columns: 1.15fr"],
+    [style*="grid-template-columns: 2fr 1fr"],
+    [style*="grid-template-columns: 1.55fr"] { grid-template-columns: 1fr !important; }
+  }
+  @media (max-width: 600px) {
+    [style*="repeat(3"] { grid-template-columns: 1fr !important; }
+    [style*="grid-template-columns: 1.3fr"] { grid-template-columns: 1fr !important; }
+    [style*="max-height: 220px"], [style*="max-height: 340px"] { max-height: 560px !important; }
+    header nav { gap: 16px !important; }
+  }
+  #wa-fab { transition: transform .2s ease, box-shadow .2s ease; }
+  #wa-fab:hover { opacity: 1 !important; transform: scale(1.08); box-shadow: 0 6px 18px rgba(0,0,0,.24); }
+  /* sal-rounded */
+  img:not([alt="SAL Bags"]) { border-radius: 14px; }
+  [style*="overflow: hidden"] { border-radius: 14px; }
+</style>
+</helmet>
+<div style="font-family: 'Jost', sans-serif; color: #2b2a26; background: #faf7f0; min-height: 100%;">
+
+  <!-- Header -->
+  <header style="position: relative; padding: 0;">
+    <div style="background: #575e40; color: #f2efe4; text-align: center; font-size: 12px; letter-spacing: .2em; text-transform: uppercase; padding: 9px 16px; font-family: 'Jost', sans-serif;">Sale · Sale · Sale — up to 20% off everything · Free shipping over ₹3,000</div>
+    <div style="background: #fdfbf5; display: flex; align-items: center; justify-content: space-between; padding: 20px 56px 8px; position: relative; z-index: 2;">
+      <nav style="display: flex; gap: 34px; font-size: 13px; letter-spacing: .16em; text-transform: uppercase; flex: 1;">
+        <a href="Shop All Page.dc.html">Shop All</a>
+        <span style="position: relative;" onMouseEnter="{{ openCats }}" onMouseLeave="{{ closeCats }}">
+          <a href="Shop All Page.dc.html" style="cursor: pointer; display: inline-flex; align-items: center; gap: 5px;">Categories <span style="font-size: 9px; line-height: 1;">⌄</span></a>
+          <div style="position: absolute; top: 100%; left: 50%; transform: translateX(-50%); padding-top: 14px; display: {{ catDisplay }}; z-index: 20;"><div style="background: #fdfbf5; border: 1px solid #ece4d3; box-shadow: 0 14px 34px rgba(120,96,58,.16); padding: 10px 0; min-width: 200px;">
+            <sc-for list="{{ categories }}" as="c" hint-placeholder-count="7">
+              <a href="{{ c.href }}" style="display: block; padding: 9px 22px; font-family: 'Cormorant Garamond', serif; font-size: 17px; letter-spacing: .02em; text-transform: none; color: #2b2a26;" style-hover="{{ catItemHover }}">{{ c.name }}</a>
+            </sc-for>
+          </div></div>
+        </span>
+        <a href="About Page.dc.html">About</a>
+      </nav>
+      <div style="flex: 0; display: flex; align-items: center;"><a href="SAL Bags Home Page.dc.html"><img src="uploads/Logo file (7).svg" alt="SAL Bags" style="height: 53px; width: 89px; display: block; align-self: flex-start; position: relative; top: -5px;"></a></div>
+      <nav style="display: flex; gap: 34px; font-size: 13px; letter-spacing: .16em; text-transform: uppercase; flex: 1; justify-content: flex-end;">
+        <a href="Contact Page.dc.html">Contact</a>
+        <a href="FAQ Page.dc.html">FAQ</a>
+        <a href="Cart Page.dc.html">Cart</a>
+      </nav>
+    </div>
+    <div style="height: 88px; background-color: #cbb18b; background-image:
+        linear-gradient(90deg, rgba(120,96,58,.34) 25%, transparent 25%, transparent 50%, rgba(120,96,58,.34) 50%, rgba(120,96,58,.34) 75%, transparent 75%),
+        linear-gradient(0deg, rgba(120,96,58,.34) 25%, transparent 25%, transparent 50%, rgba(120,96,58,.34) 50%, rgba(120,96,58,.34) 75%, transparent 75%);
+        background-size: 68px 68px;"></div>
+  </header>
+
+  <!-- Page title -->
+  <section style="background: #faf7f0; padding: 64px 56px 30px; text-align: center;">
+    <div style="font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: #9a8f74; margin-bottom: 10px;">The full collection</div>
+    <h1 style="font-family: 'Cormorant Garamond', serif; font-size: 46px; font-weight: 500;">Shop All Bags</h1>
+  </section>
+
+  <!-- Filter bar -->
+  <section style="background: #faf7f0; padding: 0 56px 34px;">
+    <div style="max-width: 1180px; margin: 0 auto; border-top: 1px solid #ece4d3; border-bottom: 1px solid #ece4d3; padding: 18px 0; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;">
+
+      <!-- type filters -->
+      <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+        <span style="font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: #9a8f74; margin-right: 6px;">Type</span>
+        <sc-for list="{{ types }}" as="t" hint-placeholder-count="8">
+          <button onClick="{{ t.onClick }}" style="background: {{ t.bg }}; color: {{ t.color }}; border: 1px solid {{ t.border }}; cursor: pointer; font-family: 'Jost', sans-serif; font-size: 12px; letter-spacing: .04em; padding: 7px 15px; border-radius: 20px; transition: all .2s;">{{ t.label }}</button>
+        </sc-for>
+      </div>
+
+      <!-- price filter -->
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <span style="font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: #9a8f74; margin-right: 6px;">Price</span>
+        <sc-for list="{{ prices }}" as="p" hint-placeholder-count="4">
+          <button onClick="{{ p.onClick }}" style="background: {{ p.bg }}; color: {{ p.color }}; border: 1px solid {{ p.border }}; cursor: pointer; font-family: 'Jost', sans-serif; font-size: 12px; letter-spacing: .04em; padding: 7px 15px; border-radius: 20px; transition: all .2s;">{{ p.label }}</button>
+        </sc-for>
+      </div>
+    </div>
+
+    <!-- result count / clear -->
+    <div style="max-width: 1180px; margin: 14px auto 0; display: flex; align-items: center; justify-content: space-between; font-size: 13px; color: #706a5c;">
+      <span>{{ countLabel }}</span>
+      <button onClick="{{ clearFilters }}" style="background: none; border: none; cursor: pointer; font-family: 'Jost', sans-serif; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: #556042; text-decoration: underline; text-underline-offset: 3px; opacity: {{ clearOpacity }};">Clear all</button>
+    </div>
+  </section>
+
+  <!-- Continuous product grid -->
+  <section style="background: #faf7f0; padding: 6px 56px 100px;">
+    <div style="max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 26px 26px;">
+      <sc-for list="{{ visible }}" as="p" hint-placeholder-count="12">
+        <a href="#" style="display: block; color: inherit;" onMouseEnter="{{ p.onEnter }}" onMouseLeave="{{ p.onLeave }}">
+          <div style="position: relative; aspect-ratio: 4/5; overflow: hidden; margin-bottom: 14px; background: #efe9dc;">
+            <img src="{{ p.img1 }}" alt="{{ p.name }}" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block;">
+            <img src="{{ p.img2 }}" alt="{{ p.name }} alternate" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; opacity: {{ p.hoverOpacity }}; transition: opacity .5s ease;">
+            <span style="position: absolute; top: 12px; left: 12px; background: rgba(250,247,240,.92); color: #6b6250; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; padding: 5px 10px; border-radius: 12px;">{{ p.type }}</span>
+          </div>
+          <div style="font-family: 'Cormorant Garamond', serif; font-size: 19px;">{{ p.name }}</div>
+          <div style="font-size: 13px; letter-spacing: .04em; margin-top: 2px; display: flex; gap: 8px; align-items: baseline;"><span style="color: #b0a892; text-decoration: line-through;">{{ p.mrp }}</span><span style="color: #a2543f;">{{ p.priceLabel }}</span></div>
+        </a>
+      </sc-for>
+    </div>
+
+    <sc-if value="{{ isEmpty }}" hint-placeholder-val="{{ false }}">
+      <div style="max-width: 1180px; margin: 40px auto; text-align: center; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 22px; color: #9a8f74;">No bags match these filters yet.</div>
+    </sc-if>
+  </section>
+
+  <dc-import name="Site Footer" hint-size="100%,420px"></dc-import>
+
+</div>
+  <a href="https://wa.me/918605340604?text=Hi%20there%2C%20SAL%20Bags!" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp" id="wa-fab" style="position: fixed; right: 22px; bottom: 22px; z-index: 9999; width: 56px; height: 56px; border-radius: 50%; background: #25D366; box-shadow: 0 4px 14px rgba(0,0,0,.18); display: flex; align-items: center; justify-content: center;"><svg viewBox="0 0 32 32" width="30" height="30" fill="#fff" xmlns="http://www.w3.org/2000/svg"><path d="M16.001 3.2C9.03 3.2 3.2 8.83 3.2 15.78c0 2.5.73 4.83 1.99 6.8L3.2 28.8l6.4-1.96a12.9 12.9 0 0 0 6.4 1.68h.01c6.97 0 12.79-5.63 12.79-12.58S22.97 3.2 16.001 3.2zm0 23.03h-.01a10.7 10.7 0 0 1-5.44-1.49l-.39-.23-3.8 1.16 1.18-3.7-.25-.38a10.32 10.32 0 0 1-1.63-5.62c0-5.77 4.83-10.46 10.75-10.46 2.87 0 5.57 1.09 7.6 3.06a10.2 10.2 0 0 1 3.15 7.41c0 5.77-4.83 10.46-10.75 10.46zm5.9-7.83c-.32-.16-1.9-.92-2.2-1.03-.29-.11-.5-.16-.72.16-.21.32-.82 1.03-1 1.24-.19.21-.37.24-.68.08-.32-.16-1.36-.49-2.59-1.57-.96-.84-1.6-1.87-1.79-2.19-.19-.32-.02-.49.14-.65.14-.14.32-.37.48-.56.16-.19.21-.32.32-.53.11-.21.05-.4-.03-.56-.08-.16-.72-1.72-.98-2.36-.26-.62-.52-.54-.72-.55l-.61-.01c-.21 0-.56.08-.85.4-.29.32-1.11 1.09-1.11 2.65 0 1.56 1.14 3.07 1.3 3.28.16.21 2.25 3.43 5.45 4.81.76.33 1.35.53 1.81.68.76.24 1.45.21 2 .13.61-.09 1.9-.78 2.17-1.53.27-.75.27-1.39.19-1.53-.08-.14-.29-.21-.61-.37z"></path></svg></a>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { type: "All", price: "All", hovered: -1, catOpen: false };
+  renderVals() {
+    const imgs = [
+      "uploads/9e8b317d71dc88eb1d3bebfc08ca2abf.jpg",
+      "uploads/a8235354-f10a-4b4c-bd03-e5e5fbc9fb10.avif",
+      "uploads/ddb8a71e-a368-42da-8c72-e7389f91269a.84a08b7ce333235f07cf1ee4a8808a74.avif",
+      "uploads/78155660a5067c19c5907d4f5dbb0adc3362211772e60df89b6b23f8971b8669.webp",
+    ];
+    const all = [
+      { name: "The Marlow Tote", type: "Puff bags", price: 148, img1: imgs[1], img2: imgs[0] },
+      { name: "Wren Crossbody", type: "Designer Bags", price: 96, img1: imgs[0], img2: imgs[2] },
+      { name: "Field Carryall", type: "Bow Bags", price: 168, img1: imgs[2], img2: imgs[3] },
+      { name: "Suki Clutch", type: "Lining Formal Bags", price: 74, img1: imgs[3], img2: imgs[1] },
+      { name: "Juna Bucket Bag", type: "Puff bags", price: 132, img1: imgs[1], img2: imgs[2] },
+      { name: "Odette Pouch", type: "Laptop / Mac Cover", price: 42, img1: imgs[3], img2: imgs[0] },
+      { name: "Rowan Backpack", type: "Ruffle Bags", price: 178, img1: imgs[2], img2: imgs[1] },
+      { name: "Lise Card Holder", type: "Bubble Basket", price: 34, img1: imgs[0], img2: imgs[3] },
+      { name: "Marlowe Weekender", type: "Bow Bags", price: 214, img1: imgs[1], img2: imgs[3] },
+      { name: "Ines Mini Crossbody", type: "Designer Bags", price: 88, img1: imgs[0], img2: imgs[1] },
+      { name: "Della Evening Clutch", type: "Lining Formal Bags", price: 96, img1: imgs[3], img2: imgs[2] },
+      { name: "Pia Everyday Tote", type: "Puff bags", price: 158, img1: imgs[1], img2: imgs[0] },
+    ];
+
+    const typeNames = ["All", "Puff bags", "Designer Bags", "Lining Formal Bags", "Ruffle Bags", "Bow Bags", "Laptop / Mac Cover", "Bubble Basket"];
+    const priceBands = [
+      { key: "All", label: "All" },
+      { key: "u75", label: "Under ₹6,750", test: p => p < 75 },
+      { key: "75-150", label: "₹6,750–13,500", test: p => p >= 75 && p <= 150 },
+      { key: "o150", label: "Over ₹13,500", test: p => p > 150 },
+    ];
+
+    const priceObj = priceBands.find(b => b.key === this.state.price);
+    const filtered = all.filter(p =>
+      (this.state.type === "All" || p.type === this.state.type) &&
+      (this.state.price === "All" || (priceObj.test && priceObj.test(p.price)))
+    );
+
+    const active = { bg: "#575e40", color: "#f2efe4", border: "#575e40" };
+    const idle = { bg: "#fdfbf5", color: "#4a4536", border: "#e0d6c2" };
+    const activeAlt = { bg: "#cbb18b", color: "#3a3324", border: "#cbb18b" };
+
+    const hasFilter = this.state.type !== "All" || this.state.price !== "All";
+
+    return {
+      catDisplay: this.state.catOpen ? "block" : "none",
+      catItemHover: { background: "#f3ecdd" },
+      openCats: () => this.setState({ catOpen: true }),
+      closeCats: () => this.setState({ catOpen: false }),
+      categories: [
+        { name: "Puff bags", href: "01 Totes.dc.html" },
+        { name: "Designer Bags", href: "02 Crossbody.dc.html" },
+        { name: "Lining Formal Bags", href: "03 Clutches.dc.html" },
+        { name: "Ruffle Bags", href: "04 Backpacks.dc.html" },
+        { name: "Bow Bags", href: "05 Weekenders.dc.html" },
+        { name: "Laptop / Mac Cover", href: "06 Pouches.dc.html" },
+        { name: "Bubble Basket", href: "07 Accessories.dc.html" },
+      ],
+      types: typeNames.map(t => ({
+        label: t,
+        onClick: () => this.setState({ type: t }),
+        ...(this.state.type === t ? active : idle),
+      })),
+      prices: priceBands.map(b => ({
+        label: b.label,
+        onClick: () => this.setState({ price: b.key }),
+        ...(this.state.price === b.key ? activeAlt : idle),
+      })),
+      countLabel: filtered.length + (filtered.length === 1 ? " bag" : " bags") + (hasFilter ? " — filtered" : " — showing everything"),
+      clearFilters: () => this.setState({ type: "All", price: "All" }),
+      clearOpacity: hasFilter ? 1 : 0,
+      isEmpty: filtered.length === 0,
+      visible: filtered.map((p, i) => ({
+        ...p,
+        priceLabel: "₹" + Math.max(2000, Math.round(p.price * 90 / 50) * 50).toLocaleString("en-IN"),
+        mrp: "₹" + (Math.round(Math.max(2000, Math.round(p.price * 90 / 50) * 50) * 1.25 / 50) * 50).toLocaleString("en-IN"),
+        hoverOpacity: this.state.hovered === i ? 1 : 0,
+        onEnter: () => this.setState({ hovered: i }),
+        onLeave: () => this.setState({ hovered: -1 }),
+      })),
+    };
+  }
+}
+</script>
+</body>
+</html>

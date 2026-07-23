@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #faf7f0; }
+  a { color: #556042; text-decoration: none; transition: opacity .2s; }
+  a:hover { opacity: .6; }
+
+  /* sal-responsive */
+  @media (max-width: 900px) {
+    header > div:first-child { flex-wrap: wrap !important; justify-content: center !important; gap: 10px 22px !important; padding: 14px 20px 10px !important; }
+    header nav { flex: 0 0 auto !important; justify-content: center !important; gap: 20px !important; font-size: 12px !important; }
+    section, footer { padding-left: 24px !important; padding-right: 24px !important; }
+    [style*="padding: 0 56px"] { padding-left: 24px !important; padding-right: 24px !important; }
+    [style*="repeat(4"] { grid-template-columns: repeat(2, 1fr) !important; }
+    [style*="grid-template-columns: 1fr auto 1fr"] { grid-template-columns: 1fr !important; row-gap: 48px !important; }
+    [style*="justify-self: end"], [style*="justify-self: start"] { justify-self: center !important; }
+    [style*="grid-template-columns: 1.3fr"] { grid-template-columns: 1fr 1fr !important; }
+    [style*="grid-template-columns: 1.15fr"],
+    [style*="grid-template-columns: 2fr 1fr"],
+    [style*="grid-template-columns: 1.55fr"] { grid-template-columns: 1fr !important; }
+  }
+  @media (max-width: 600px) {
+    [style*="repeat(3"] { grid-template-columns: 1fr !important; }
+    [style*="grid-template-columns: 1.3fr"] { grid-template-columns: 1fr !important; }
+    [style*="max-height: 220px"], [style*="max-height: 340px"] { max-height: 560px !important; }
+    header nav { gap: 16px !important; }
+  }
+  #wa-fab { transition: transform .2s ease, box-shadow .2s ease; }
+  #wa-fab:hover { opacity: 1 !important; transform: scale(1.08); box-shadow: 0 6px 18px rgba(0,0,0,.24); }
+  /* sal-rounded */
+  img:not([alt="SAL Bags"]) { border-radius: 14px; }
+  [style*="overflow: hidden"] { border-radius: 14px; }
+</style>
+</helmet>
+<div style="font-family: 'Jost', sans-serif; color: #2b2a26; background: #faf7f0; min-height: 100%;">
+
+  <!-- Header -->
+  <header style="position: relative; padding: 0;">
+    <div style="background: #575e40; color: #f2efe4; text-align: center; font-size: 12px; letter-spacing: .2em; text-transform: uppercase; padding: 9px 16px; font-family: 'Jost', sans-serif;">Sale · Sale · Sale — up to 20% off everything · Free shipping over ₹3,000</div>
+    <div style="background: #fdfbf5; display: flex; align-items: center; justify-content: space-between; padding: 20px 56px 8px; position: relative; z-index: 30;">
+      <nav style="display: flex; gap: 34px; font-size: 13px; letter-spacing: .16em; text-transform: uppercase; flex: 1;">
+        <a href="Shop All Page.dc.html">Shop All</a>
+        <span style="position: relative;" onMouseEnter="{{ openCats }}" onMouseLeave="{{ closeCats }}">
+          <a href="Shop All Page.dc.html" style="cursor: pointer; display: inline-flex; align-items: center; gap: 5px;">Categories <span style="font-size: 9px; line-height: 1;">⌄</span></a>
+          <div style="position: absolute; top: 100%; left: 50%; transform: translateX(-50%); padding-top: 14px; display: {{ catDisplay }}; z-index: 40;"><div style="background: #fdfbf5; border: 1px solid #ece4d3; box-shadow: 0 14px 34px rgba(120,96,58,.16); padding: 10px 0; min-width: 200px;">
+            <sc-for list="{{ categories }}" as="c" hint-placeholder-count="7">
+              <a href="{{ c.href }}" style="display: block; padding: 9px 22px; font-family: 'Cormorant Garamond', serif; font-size: 17px; letter-spacing: .02em; text-transform: none; color: #2b2a26;" style-hover="{{ catItemHover }}">{{ c.name }}</a>
+            </sc-for>
+          </div></div>
+        </span>
+        <a href="About Page.dc.html">About</a>
+      </nav>
+      <div style="flex: 0; display: flex; align-items: center;"><a href="SAL Bags Home Page.dc.html"><img src="uploads/Logo file (7).svg" alt="SAL Bags" style="height: 53px; width: 89px; display: block; align-self: flex-start; position: relative; top: -5px;"></a></div>
+      <nav style="display: flex; gap: 34px; font-size: 13px; letter-spacing: .16em; text-transform: uppercase; flex: 1; justify-content: flex-end;">
+        <a href="Contact Page.dc.html">Contact</a>
+        <a href="FAQ Page.dc.html" style="color: #2b2a26; border-bottom: 1px solid #cbb18b; padding-bottom: 2px;">FAQ</a>
+        <a href="Cart Page.dc.html">Cart</a>
+      </nav>
+    </div>
+    <div style="height: 88px; background-color: #cbb18b; background-image:
+        linear-gradient(90deg, rgba(120,96,58,.34) 25%, transparent 25%, transparent 50%, rgba(120,96,58,.34) 50%, rgba(120,96,58,.34) 75%, transparent 75%),
+        linear-gradient(0deg, rgba(120,96,58,.34) 25%, transparent 25%, transparent 50%, rgba(120,96,58,.34) 50%, rgba(120,96,58,.34) 75%, transparent 75%);
+        background-size: 68px 68px;"></div>
+  </header>
+
+  <!-- Title -->
+  <section style="background: #faf7f0; padding: 70px 56px 40px; text-align: center;">
+    <div style="font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: #9a8f74; margin-bottom: 12px;">Help centre</div>
+    <h1 style="font-family: 'Cormorant Garamond', serif; font-size: 50px; font-weight: 500;">FAQ &amp; Help</h1>
+    <p style="font-size: 15px; line-height: 1.8; color: #575349; max-width: 560px; margin: 20px auto 0;">Everything about orders, shipping, and caring for your bag. Still stuck? <a href="Contact Page.dc.html">Talk to us →</a></p>
+  </section>
+
+  <!-- Accordion groups -->
+  <section style="background: #faf7f0; padding: 20px 56px 100px;">
+    <div style="max-width: 860px; margin: 0 auto;">
+      <sc-for list="{{ groups }}" as="g" hint-placeholder-count="3">
+        <div style="margin-bottom: 52px;">
+          <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 500; color: #575e40; margin-bottom: 18px; letter-spacing: .02em;">{{ g.title }}</h2>
+          <div style="border-top: 1px solid #ece4d3;">
+            <sc-for list="{{ g.items }}" as="f" hint-placeholder-count="4">
+              <div style="border-bottom: 1px solid #ece4d3;">
+                <button onClick="{{ f.onToggle }}" style="width: 100%; background: transparent; border: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 20px 4px; color: #2b2a26; font-family: 'Jost', sans-serif; font-size: 16px; text-align: left;">
+                  <span>{{ f.q }}</span>
+                  <span style="font-size: 18px; color: #cbb18b; transition: transform .3s ease; transform: {{ f.chevron }}; flex: 0 0 auto;">⌄</span>
+                </button>
+                <div style="overflow: hidden; transition: max-height .4s ease, opacity .4s ease, padding .4s ease; max-height: {{ f.maxH }}; opacity: {{ f.opacity }}; padding: {{ f.pad }};">
+                  <p style="font-size: 14px; line-height: 1.8; color: #575349; max-width: 700px;">{{ f.a }}</p>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <dc-import name="Site Footer" hint-size="100%,320px"></dc-import>
+
+</div>
+  <a href="https://wa.me/918605340604?text=Hi%20there%2C%20SAL%20Bags!" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp" id="wa-fab" style="position: fixed; right: 22px; bottom: 22px; z-index: 9999; width: 56px; height: 56px; border-radius: 50%; background: #25D366; box-shadow: 0 4px 14px rgba(0,0,0,.18); display: flex; align-items: center; justify-content: center;"><svg viewBox="0 0 32 32" width="30" height="30" fill="#fff" xmlns="http://www.w3.org/2000/svg"><path d="M16.001 3.2C9.03 3.2 3.2 8.83 3.2 15.78c0 2.5.73 4.83 1.99 6.8L3.2 28.8l6.4-1.96a12.9 12.9 0 0 0 6.4 1.68h.01c6.97 0 12.79-5.63 12.79-12.58S22.97 3.2 16.001 3.2zm0 23.03h-.01a10.7 10.7 0 0 1-5.44-1.49l-.39-.23-3.8 1.16 1.18-3.7-.25-.38a10.32 10.32 0 0 1-1.63-5.62c0-5.77 4.83-10.46 10.75-10.46 2.87 0 5.57 1.09 7.6 3.06a10.2 10.2 0 0 1 3.15 7.41c0 5.77-4.83 10.46-10.75 10.46zm5.9-7.83c-.32-.16-1.9-.92-2.2-1.03-.29-.11-.5-.16-.72.16-.21.32-.82 1.03-1 1.24-.19.21-.37.24-.68.08-.32-.16-1.36-.49-2.59-1.57-.96-.84-1.6-1.87-1.79-2.19-.19-.32-.02-.49.14-.65.14-.14.32-.37.48-.56.16-.19.21-.32.32-.53.11-.21.05-.4-.03-.56-.08-.16-.72-1.72-.98-2.36-.26-.62-.52-.54-.72-.55l-.61-.01c-.21 0-.56.08-.85.4-.29.32-1.11 1.09-1.11 2.65 0 1.56 1.14 3.07 1.3 3.28.16.21 2.25 3.43 5.45 4.81.76.33 1.35.53 1.81.68.76.24 1.45.21 2 .13.61-.09 1.9-.78 2.17-1.53.27-.75.27-1.39.19-1.53-.08-.14-.29-.21-.61-.37z"></path></svg></a>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { catOpen: false, open: "0-0" };
+  renderVals() {
+    const groups = [
+      { title: "Orders & shipping", items: [
+        { q: "Where are you based?", a: "SAL Bags is proudly based in Pune, Maharashtra, India. Every bag is thoughtfully designed with attention to detail and shipped across India. We are also working towards serving customers worldwide." },
+        { q: "How long does it take to ship my order?", a: "Orders are usually processed within 2–4 business days. Estimated delivery — Maharashtra: 4–6 business days minimum; Rest of India: 7–9 business days minimum; International orders: delivery time depends on the destination country. You'll receive a tracking link once your order has been dispatched." },
+        { q: "Do you ship across India?", a: "Yes! We deliver to most locations across India through trusted courier partners." },
+        { q: "Do you ship internationally?", a: "Yes, international shipping is available for selected countries. Shipping charges and delivery times are calculated at checkout based on your destination." },
+        { q: "Is shipping free?", a: "We offer free shipping on orders of ₹5,000 and above. Shipping charges (if applicable) are calculated automatically during checkout." },
+      ]},
+      { title: "Returns & exchanges", items: [
+        { q: "What is your return policy?", a: "We accept returns only for products that arrive damaged, defective, or incorrect. As most of our products are handmade and produced in limited quantities, we do not accept returns for change of mind. Please contact us within 48 hours of delivery with clear photos if you receive a damaged product." },
+        { q: "Can I exchange my bag?", a: "Yes, exchanges are available only for damaged or incorrect items, subject to stock availability." },
+        { q: "Do your bags come with a warranty?", a: "We stand behind the quality of our craftsmanship. If you experience any manufacturing defect within 30 days of receiving your order, please reach out to us and we'll do our best to resolve the issue. Please note that normal wear and tear, accidental damage, or improper care are not covered." },
+        { q: "Can I cancel or modify my order?", a: "Orders can be cancelled or modified within 12 hours of placing them. Once your order has been processed or shipped, changes may not be possible." },
+      ]},
+      { title: "Product & care", items: [
+        { q: "What materials are your bags made from?", a: "Our bags are crafted using carefully selected premium fabrics such as cotton, quilted cotton, canvas, corduroy, and other durable textiles, paired with high-quality linings and sturdy hardware. We focus on creating bags that are stylish, lightweight, functional, and made to last." },
+        { q: "Are your bags handmade?", a: "Yes. Every SAL Bag is thoughtfully handcrafted by skilled artisans. Since each piece is handmade, slight variations in stitching, texture, or pattern placement make every bag unique." },
+        { q: "How do I care for my bag?", a: "To keep your bag looking beautiful: spot clean with a soft damp cloth; hand wash gently if required (only for washable fabric styles); do not bleach or use harsh detergents; air dry naturally away from direct sunlight; and store in a cool, dry place when not in use." },
+        { q: "Do you accept bulk or custom orders?", a: "Yes! We love creating custom pieces and also accept bulk orders for gifting, events, weddings, and corporate requirements. Please contact us for pricing and timelines." },
+        { q: "How can I contact you?", a: "We're always happy to help. Email: help.salbags@gmail.com · WhatsApp: +91 8605340604. You can also reach us through the Contact page or Instagram, and we'll get back to you as soon as possible." },
+      ]},
+    ];
+    return {
+      categories: [
+        { name: "Puff bags", href: "01 Totes.dc.html" },
+        { name: "Designer Bags", href: "02 Crossbody.dc.html" },
+        { name: "Lining Formal Bags", href: "03 Clutches.dc.html" },
+        { name: "Ruffle Bags", href: "04 Backpacks.dc.html" },
+        { name: "Bow Bags", href: "05 Weekenders.dc.html" },
+        { name: "Laptop / Mac Cover", href: "06 Pouches.dc.html" },
+        { name: "Bubble Basket", href: "07 Accessories.dc.html" },
+      ],
+      catDisplay: this.state.catOpen ? "block" : "none",
+      catItemHover: { background: "#f3ecdd" },
+      openCats: () => this.setState({ catOpen: true }),
+      closeCats: () => this.setState({ catOpen: false }),
+      groups: groups.map((g, gi) => ({
+        title: g.title,
+        items: g.items.map((f, fi) => {
+          const key = gi + "-" + fi;
+          const open = this.state.open === key;
+          return {
+            ...f,
+            onToggle: () => this.setState(s => ({ open: s.open === key ? "" : key })),
+            chevron: open ? "rotate(180deg)" : "rotate(0deg)",
+            maxH: open ? "340px" : "0px",
+            opacity: open ? 1 : 0,
+            pad: open ? "0 4px 22px" : "0 4px",
+          };
+        }),
+      })),
+    };
+  }
+}
+</script>
+</body>
+</html>
